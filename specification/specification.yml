@@ -97,6 +97,7 @@ paths:
 
         '409':
           description: Пользователь с таким mail уже существует.
+
   /users/login:
     post:
       tags:
@@ -109,13 +110,6 @@ paths:
       summary: Проверка состояния пользователя.
       description: Возврат информации о пользователе.
 
-  /users/{userId}/avatar:
-    post:
-      tags:
-        - users
-      summary: Загрузить изображение
-      description: Загрузка изображения аватара пользователя.
-
   /offers:
     get:
       tags:
@@ -127,7 +121,7 @@ paths:
           in: query
           schema:
             type: integer
-            default: 60
+            maximum: 60
             example: 10
           description: Количество предложений для возврата
       responses:
@@ -237,6 +231,10 @@ paths:
       responses:
         '204':
           description: Предложение успешно удалено
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/offer'
         '404':
           description: Предложение не найдено
 
@@ -363,7 +361,7 @@ components:
           example: Keks
 
         avatar:
-          type: [string, 'null']
+          type: string
           example: https://gravatar.com/avatar/7cb23e9dcb44eeff5331a137414a0f1b?s=400&d=robohash&r=x
 
         type:
@@ -601,6 +599,10 @@ components:
         commentCount:
           type: integer
           example: 4
+
+        userId:
+          type: string
+          example: 9b1e9c2d-27f5-4c39-bd5e-0139a60a2dbb
 
     offer:
       type: object
