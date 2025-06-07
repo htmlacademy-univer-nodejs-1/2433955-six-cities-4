@@ -1,5 +1,6 @@
 export const Component = {
-  Application: Symbol.for('RestApplication'),
+  Application: Symbol.for('Application'),
+  RestApplication: Symbol.for('RestApplication'),
   Logger: Symbol.for('Logger'),
   Config: Symbol.for('Config'),
   DatabaseClient: Symbol.for('DatabaseClient'),
@@ -9,4 +10,8 @@ export const Component = {
   CityModel: Symbol.for('CityModel'),
   OfferService: Symbol.for('OfferService'),
   OfferModel: Symbol.for('OfferModel'),
+  OfferSummaryModel: Symbol.for('OfferSummaryModel'),
+  CommentService: Symbol.for('CommentService'),
+  CommentModel: Symbol.for('CommentModel'),
+  FavoriteModel: Symbol.for('FavoriteModel'),
 } as const;
