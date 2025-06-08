@@ -29,16 +29,8 @@ export class DefaultOfferService implements OfferService {
     userId: string,
     count?: number
   ): Promise<types.DocumentType<OfferSummaryEntity>[]> {
-    const limit =
-      count && count > DEFAULT_OFFER_MAX_LIMIT
-        ? DEFAULT_OFFER_MAX_LIMIT
-        : count;
-
-    const offers = await this.offerSummaryModel
-      .find()
-      .limit(limit ?? DEFAULT_OFFER_MAX_LIMIT)
-      .exec();
-
+    const limit = count && count > DEFAULT_OFFER_MAX_LIMIT ? DEFAULT_OFFER_MAX_LIMIT : count;
+    const offers = await this.offerSummaryModel.find().limit(limit ?? DEFAULT_OFFER_MAX_LIMIT).exec();
     return this.withFavorites(offers, userId);
   }
 
