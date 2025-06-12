@@ -21,19 +21,19 @@ export interface OfferEntity extends defaultClasses.Base {}
 })
 // eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 export class OfferEntity extends defaultClasses.TimeStamps {
-  @prop({ trim: true, required: true })
+  @prop({ trim: true, required: true, type: () => String })
   public title!: string;
 
-  @prop({ trim: true })
+  @prop({ trim: true, type: () => String })
   public description!: string;
 
-  @prop()
+  @prop({ type: () => String })
   public image!: string;
 
-  @prop()
+  @prop({ type: () => Date })
   public date!: Date;
 
-  @prop()
+  @prop({ type: () => Number })
   public cost!: number;
 
   @prop({
@@ -42,16 +42,16 @@ export class OfferEntity extends defaultClasses.TimeStamps {
   })
   public town!: TownType;
 
-  @prop()
+  @prop({ type: () => [String] })
   public gallery!: string[];
 
-  @prop()
+  @prop({ type: () => Boolean })
   public isPremium!: boolean;
 
-  @prop()
+  @prop({ type: () => Boolean })
   public isFavorite!: boolean;
 
-  @prop()
+  @prop({ type: () => Number })
   public rating!: number;
 
   @prop({
@@ -60,19 +60,19 @@ export class OfferEntity extends defaultClasses.TimeStamps {
   })
   public apartmentType!: ApartmentType;
 
-  @prop()
+  @prop({ type: () => Number })
   public roomCount!: number;
 
-  @prop()
+  @prop({ type: () => Number })
   public guestCount!: number;
 
-  @prop()
+  @prop({ type: () => [String] })
   public amenities!: Amenity[];
 
-  @prop()
+  @prop({ type: () => Number })
   public commentCount!: number;
 
-  @prop()
+  @prop({ type: () => Object })
   public coordinates!: Coordinates;
 
   @prop({

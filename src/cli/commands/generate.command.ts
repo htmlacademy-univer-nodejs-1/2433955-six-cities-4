@@ -8,12 +8,18 @@ import { getErrorMessage } from '../../shared/helpers/common.js';
 export class GenerateCommand implements Command{
   private initialData!: MockServerData;
 
-  private async load(url: string){
-    try{
-      const {data} = await axios.get(url);
-      this.initialData = data.api;
-    }catch{
-      throw new Error(`Can't load data from ${url}`);
+  private async load(url: string) {
+    try {
+      const { data } = await axios.get(url);
+
+      if (!data || typeof data !== 'object') {
+        throw new Error('Invalid or empty data received');
+      }
+
+      this.initialData = data;
+    } catch (error) {
+      console.error('Error loading data:', getErrorMessage(error));
+      throw error;
     }
   }
 

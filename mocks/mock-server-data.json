@@ -1,60 +1,36 @@
 {
   "api": {
-    "title": [
-      "Luxury apartment",
-      "Riverside house",
-      "Large and cozy hotel",
-      "Family apartment",
-      "Modern apartment with smart home"
+    "title": ["Luxury apartment", "Riverside house"],
+    "description": ["Modern apartment...", "Spacious house..."],
+    "houseImages": ["https://example.com/image1.jpg"],
+    "city": ["Paris", "Amsterdam"],
+    "rating": [1, 2, 3, 4, 5],
+    "name": ["Jack", "Mary"],
+    "email": ["jack@gmail.com", "mary@gmail.com"],
+    "avatarImage": ["ava1.jpg", "ava2.jpg"],
+    "author": [
+      {
+        "name": "Jack",
+        "mail": "jack@gmail.com",
+        "avatar": "ava1.jpg",
+        "type": "default"
+      },
+      {
+        "name": "Mary",
+        "mail": "mary@gmail.com",
+        "avatar": "ava2.jpg",
+        "type": "pro"
+      }
     ],
-    "description": [
-      "Modern apartment in the city center",
-      "Spacious house on the river bank. Ideal place for a vacation in nature",
-      "Spacious and cozy hotel in the heart of Brussels, ideal for a comfortable stay",
-      "Cozy apartment for the whole family in Hamburg, with amenities for a comfortable stay",
-      "Modern apartment with smart home system in Düsseldorf for those who appreciate innovation and comfort"
-    ],
-    "houseImages": [
-      "https://example.com/images/preview1.jpg",
-      "https://example.com/images/preview2.jpg",
-      "https://example.com/images/preview3.jpg",
-      "https://example.com/images/preview4.jpg",
-      "https://example.com/images/preview5.jpg"
-    ],
-    "city": [
-      "Paris",
-      "Amsterdam",
-      "Brussels",
-      "Hamburg",
-      "Düsseldorf"
-    ],
-    "rating": [
-      1,
-      2,
-      3,
-      4,
-      5
-    ],
-    "name": [
-      "Jack",
-      "Ivan",
-      "Kevin",
-      "Mary",
-      "Alla"
-    ],
-    "email": [
-      "jack@gmail.com",
-      "ivan@mail.ru",
-      "kevin@gmail.com",
-      "mary@gmail.com",
-      "alla@gmail.com"
-    ],
-    "avatarImage": [
-      "ava1.jpg",
-      "ava2.jpg",
-      "ava3.jpg",
-      "ava4.jpg",
-      "ava5.jpg"
+    "apartmentType": ["apartment", "house", "room", "hotel"],
+    "roomCount": [1, 2, 3, 4, 5],
+    "guestCount": [1, 2, 3, 4, 5],
+    "cost": [100000, 80000, 60000, 120000],
+    "amenities": [["WiFi", "Kitchen"], ["Balcony", "View"]],
+    "commentCount": [10, 5, 12],
+    "coordinates": [
+      {"latitude": 52.370216, "longitude": 4.895168},
+      {"latitude": 48.85661, "longitude": 2.351499}
     ]
   }
 }
