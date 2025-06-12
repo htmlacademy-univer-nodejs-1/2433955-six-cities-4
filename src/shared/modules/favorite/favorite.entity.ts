@@ -6,10 +6,10 @@ import { defaultClasses, getModelForClass, modelOptions, prop } from '@typegoose
   },
 })
 export class FavoriteEntity extends defaultClasses.TimeStamps {
-  @prop({ required: true })
+  @prop({ required: true, type: () => String })
   public userId!: string;
 
-  @prop({ required: true })
+  @prop({ required: true, type: () => String })
   public offerId!: string;
 }
 

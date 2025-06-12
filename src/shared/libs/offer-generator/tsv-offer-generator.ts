@@ -1,4 +1,3 @@
-import dayjs from 'dayjs';
 import { getRandomItem } from '../../helpers/common.js';
 import { MockServerData } from '../../types/mock-server-data.type.js';
 import { OfferGenerator } from '../../types/offer-generator.interface.js';
@@ -6,53 +5,48 @@ import { OfferGenerator } from '../../types/offer-generator.interface.js';
 export class TSVOfferGenerator implements OfferGenerator{
   constructor(private readonly mockData: MockServerData){}
 
-  public generate() {
-    const title = getRandomItem(this.mockData.titles);
-    const description = getRandomItem(this.mockData.descriptions);
-    const date = getRandomItem(this.mockData.dates);
-    const town = getRandomItem(this.mockData.towns);
-    const coordinates = this.mockData.coordinates[this.mockData.towns.indexOf(town)];
-    const image = getRandomItem(this.mockData.images);
-    const gallery = getRandomItem(this.mockData.galleries);
-    const isPremium = getRandomItem(this.mockData.isPremium);
-    const isFavorite = getRandomItem(this.mockData.isFavorite);
-    const rating = getRandomItem(this.mockData.ratings);
-    const apartmentType = getRandomItem(this.mockData.apartmentTypes);
-    const roomCount = getRandomItem(this.mockData.roomCounts);
-    const guestCount = getRandomItem(this.mockData.guestCounts);
-    const cost = getRandomItem(this.mockData.costs);
+  public generate(): string {
+    const title = getRandomItem(this.mockData.title);
+    const description = getRandomItem(this.mockData.description);
+    const date = new Date().toISOString();
+    const town = getRandomItem(this.mockData.city);
+    const image = getRandomItem(this.mockData.houseImages);
+    const gallery = [image]; // или используйте gallery из mockData
+    const isPremium = getRandomItem([true, false]);
+    const isFavorite = getRandomItem([true, false]);
+    const rating = getRandomItem(this.mockData.rating);
+    const apartmentType = getRandomItem(this.mockData.apartmentType);
+    const roomCount = getRandomItem(this.mockData.roomCount);
+    const guestCount = getRandomItem(this.mockData.guestCount);
+    const cost = getRandomItem(this.mockData.cost);
     const amenity = getRandomItem(this.mockData.amenities);
-    const author = getRandomItem(this.mockData.authors);
-    const commentCount = getRandomItem(this.mockData.commentCounts);
+    const author = {
+      name: getRandomItem(this.mockData.name),
+      mail: getRandomItem(this.mockData.email),
+      avatar: getRandomItem(this.mockData.avatarImage),
+      status: getRandomItem(['default', 'pro'])
+    };
+    const commentCount = getRandomItem(this.mockData.commentCount);
+    const coordinates = getRandomItem(this.mockData.coordinates);
 
-    const createdDate = dayjs(date).format('MM-DD-YYYY');
-    const stringCoordinates = JSON.stringify(coordinates);
-    const stringAuthor = JSON.stringify(author);
-    const stringAmenity = JSON.stringify(amenity);
-    const stringGallery = JSON.stringify(gallery);
-
-    const resultOfGenerating = [
+    return [
       title,
       description,
-      createdDate,
+      date,
       town,
       image,
-      stringGallery,
-      isPremium,
-      isFavorite,
+      JSON.stringify(gallery),
+      String(isPremium),
+      String(isFavorite),
       rating,
       apartmentType,
       roomCount,
       guestCount,
       cost,
-      stringAmenity,
-      stringAuthor,
+      JSON.stringify(amenity),
+      JSON.stringify(author),
       commentCount,
-      stringCoordinates
+      JSON.stringify(coordinates)
     ].join('\t');
-
-    console.log(resultOfGenerating);
-
-    return resultOfGenerating;
   }
 }

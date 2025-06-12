@@ -8,19 +8,19 @@ export interface OfferEntity extends defaultClasses.Base {}
   },
 })
 export class CommentEntity extends defaultClasses.TimeStamps {
-  @prop({ required: true, trim: true })
+  @prop({ required: true, trim: true, type: () => String })
   public text!: string;
 
-  @prop()
+  @prop({ type: () => Number })
   public rating!: number;
 
-  @prop()
+  @prop({ type: () => String })
   public author!: string;
 
-  @prop()
+  @prop({ type: () => String })
   public offerId!: string;
 
-  @prop()
+  @prop({ type: () => Date })
   public date!: Date;
 }
 

@@ -8,5 +8,5 @@ export interface CommentService {
     offerId: string,
     count?: number
   ): Promise<DocumentType<CommentEntity>[]>;
-    deleteByOfferId(offerId: string): Promise<void>;
+  deleteByOfferId(offerId: string): Promise<void>;
 }
